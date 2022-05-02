@@ -123,7 +123,7 @@ ggplot(sub, aes(y=StandardisedTraitValue, x=ConTemp)) +
             geom_line(aes(T, rate), preds, col = 'blue') +
             theme_bw(base_size = 12) +
             labs(x = 'Temperature (oC)',
-                 y = temp$StandardisedTraitUnit, title= temp$ConSpecies)
+                 y = sub$StandardisedTraitUnit, title= sub$ConSpecies)
 
 ##single TPCs 14
 mod = 'sharpschoolhigh_1981'
@@ -171,5 +171,5 @@ ggplot(sub, aes(y=StandardisedTraitValue, x=ConTemp)) +
   geom_line(aes(T, rate), preds, col = 'blue') +
   theme_bw(base_size = 12) +
   labs(x = 'Temperature (oC)',
-       y = temp$StandardisedTraitUnit, title= temp$ConSpecies)
+       y = sub$StandardisedTraitUnit, title= sub$ConSpecies)
   
