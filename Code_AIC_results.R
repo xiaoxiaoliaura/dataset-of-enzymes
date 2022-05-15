@@ -104,30 +104,6 @@ for (i in unique(d$OriginalID)){
 
 write.csv(results_full,"results_full_Tref=0.csv")
 
-################################################################################
-###Arrhenius model
-library(minpack.lm)
-Arrhenius <- function(r_tref,e,temp){
-  k <- 8.617e-05
-  return(r_tref*exp((-e)/(k*temp)))
-}
-
-fit <- nls_multstart(StandardisedTraitValue~Arrhenius(temp = ConTemp, r_tref,e),
-                     data = temp,
-                     iter = 500,
-                     start_lower = start_vals - 10,
-                     start_upper = start_vals + 10,
-                     lower = low_lims,
-                     upper = upper_lims,
-                     supp_errors = 'Y')
-
-fit <- nlsLM(StandardisedTraitValue ~ r_tref*exp((-e)/(k*ConTemp)),
-             data = temp,
-             start =list(r_tref=0.00000827,e=0.32))
-fit <- nlsLM(StandardisedTraitValue ~ Arrhenius(temp=ConTempr_tref,e),
-             data = temp,
-             start =list(r_tref=0.00000827,e=0.32))
-
 
 ################################################################################
 ##compare between different models
