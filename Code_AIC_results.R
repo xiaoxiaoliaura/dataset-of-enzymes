@@ -112,9 +112,6 @@ Arrhenius <- function(r_tref,e,temp){
   return(r_tref*exp((-e)/(k*temp)))
 }
 
-start_vals <- get_start_vals(temp$ConTemp, temp$StandardisedTraitValue, model_name = 'Arrhenius')
-low_lims <- get_lower_lims(temp$ConTemp, temp$StandardisedTraitValue, model_name = 'Arrhenius')
-upper_lims <- get_upper_lims(temp$ConTemp, temp$StandardisedTraitValue, model_name = 'Arrhenius')
 fit <- nls_multstart(StandardisedTraitValue~Arrhenius(temp = ConTemp, r_tref,e),
                      data = temp,
                      iter = 500,
@@ -124,17 +121,13 @@ fit <- nls_multstart(StandardisedTraitValue~Arrhenius(temp = ConTemp, r_tref,e),
                      upper = upper_lims,
                      supp_errors = 'Y')
 
-ggplot(temp, aes(y=StandardisedTraitValue, x=ConTemp))+geom_point()+
-  labs(x="Temperature(oC)", y= temp$StandardisedTraitUnit, title= temp$ConSpecies)+theme_bw()
 fit <- nlsLM(StandardisedTraitValue ~ r_tref*exp((-e)/(k*ConTemp)),
              data = temp,
              start =list(r_tref=0.00000827,e=0.32))
 fit <- nlsLM(StandardisedTraitValue ~ Arrhenius(temp=ConTempr_tref,e),
              data = temp,
              start =list(r_tref=0.00000827,e=0.32))
-coef(fit)
-calc_params(fit)
-AIC(fit)
+
 
 ################################################################################
 ##compare between different models
