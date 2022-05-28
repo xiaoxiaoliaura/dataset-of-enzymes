@@ -3,7 +3,6 @@ library(broom)
 library(tidyverse)
 library(ggrepel)
 library(MuMIn)
-library(nls.multstart)
 
 #import data
 d <- read.csv("combined.csv")
