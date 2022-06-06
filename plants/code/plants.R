@@ -1,5 +1,5 @@
 #Import data
-d <- read.csv("D:/搜狗高速下载/project/plants/combined.csv")
+d <- read.csv("combined.csv")
 
 #select variables
 d <- select(d,OriginalID,ConSpecies,ConTemp,
@@ -201,9 +201,9 @@ write.csv(results_full,"results_full_Tref=0.csv")
 
 ################################################################################
 ##compare between different models
-results_high <- read.csv("D:/搜狗高速下载/project/plants/fitting/AIC/results_high_Tref=0.csv")
-results_low <- read.csv("D:/搜狗高速下载/project/plants/fitting/AIC/results_low_Tref=0.csv")
-results_full <- read.csv("D:/搜狗高速下载/project/plants/fitting/AIC/results_full_Tref=0.csv")
+results_high <- read.csv("results_high_Tref=0.csv")
+results_low <- read.csv("results_low_Tref=0.csv")
+results_full <- read.csv("results_full_Tref=0.csv")
 results_high$ID <- seq(from=1,to=2005)
 results_low$ID <- seq(from=1,to=2005)
 results_full$ID <- seq(from=1,to=2005)
